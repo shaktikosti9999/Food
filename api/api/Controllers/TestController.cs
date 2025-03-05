@@ -1,5 +1,4 @@
 ﻿using core.IService;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
@@ -20,11 +19,7 @@ namespace api.Controllers
         public ActionResult GetAllTest()
         {
             var result = _iDemoService.GetAllDemoList();
-
-            List<string> strings = new List<string>();
-            strings.Add("Shakti");
-            strings.Add("Koshti");
-            return Ok(strings);
+            return Ok(result);
 
         }
     }

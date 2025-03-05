@@ -10,3 +10,5 @@
 /api/core/obj
 /api/api/bin/Debug/net8.0
 /api/api/obj
+/api/.vs/ProjectEvaluation
+/api/infrastructure/bin/Debug/net8.0

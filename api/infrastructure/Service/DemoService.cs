@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using core.DbModel;
+﻿using core.DbModel;
+using core.Helper;
 using core.IService;
 using core.ViewModel;
+using System.Net;
 
 namespace infrastructure.Service
 {
-    class DemoService : IDemoService
+    public class DemoService : IDemoService
     {
         public ApiResponse GetAllDemoList()
         {
@@ -17,14 +14,13 @@ namespace infrastructure.Service
             {
                 Demo demo = new Demo();
                 DemoViewModel demoVm = new DemoViewModel();
-                demoVm.id = demo.id;
-                demoVm.demoText = demo.demoText;
-
-                return new ApiResponse("Sucess", null, demoVm);
+                demoVm.Id = demo.Id;
+                demoVm.DemoText = demo.DemoText;
+                return new ApiResponse(HttpStatusCode.OK, APIStatus.Success, null, demoVm);
             }
             catch (Exception ex)
             {
-                return new ApiResponse("Fail", ex.Message.ToString(), null);                
+                return new ApiResponse(HttpStatusCode.ExpectationFailed, APIStatus.Error, ex.Message.ToString(), null);
             }
         }
 
