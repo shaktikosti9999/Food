@@ -1,7 +1,14 @@
+using core.IRepository;
 using core.IService;
+using infrastructure.Repository;
 using infrastructure.Service;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add repository to the container.
+builder.Services.AddScoped<IRepository, Repository>();
+builder.Services.AddScoped<IDemoRepository, DemoRepository>();
+
 
 // Add services to the container.
 builder.Services.AddScoped<IDemoService, DemoService>();
